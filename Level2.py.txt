@@ -1,0 +1,15 @@
+# Level_2.py
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
+def generate_certificate(request, teacher_id, student_id):
+    teacher = get_object_or_404(Teacher, pk=teacher_id)
+    student = get_object_or_404(Student, pk=student_id)
+
+    # Generate certificate logic here
+    certificate_content = f"Certificate of Completion\nThis is to certify that {student.name} has successfully completed the course with {teacher.name}."
+
+    # Save the certificate content to a file or database
+    
+    return JsonResponse({'certificate': certificate_content})
